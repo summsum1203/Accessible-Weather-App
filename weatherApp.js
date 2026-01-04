@@ -3,8 +3,27 @@
    This demo uses the Visual Crossing Timeline API to fetch hourly data across a 48-hour window:
    now - 24 hours .. now + 24 hours.
 */
+const fetchWeatherData = async () => {
+  const apiKey = 'V4VLASA5XVRG2A9DMHRFRQE7F';
+  const location = '37821';
+  const unitGroup = 'metric';
+  const contentType = 'json';
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=${unitGroup}&key=${apiKey}&contentType=${contentType}`;
+  
+  try {
+    const response = await fetch(url, { method: 'GET' });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const weatherData = await response.json();
+    console.log(weatherData);
+  } catch (error) {
+    console.error('Error fetching weather data: ', error);
+  }
+};
 
-const API_KEY = 'YOUR_API_KEY_HERE'; // <-- replace with your key
+fetchWeatherData();
+const API_KEY = 'V4VLASA5XVRG2A9DMHRFRQE7F'; 
 const BASE = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
 
 const el = {
@@ -137,4 +156,6 @@ function init() {
   fetchWeatherFor(el.input.value);
 }
 
+
 document.addEventListener('DOMContentLoaded', init);
+
