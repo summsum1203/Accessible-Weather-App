@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SASSy Weather — Accessible Forecast</title>
+  <meta name="description" content="Compact accessible weather app demo — SASSy.code Web Development theme" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="brand">SASSy Weather</h1>
+    <p class="tag">Accessible forecast • SASSy.code Web Development</p>
+  </header>
+
+  <main class="container" id="app" aria-live="polite">
+    <section class="controls" aria-label="Search controls">
+      <label for="location-input" class="visually-hidden">Enter location</label>
+      <input id="location-input" type="search" placeholder="Enter city, postal code, or place" aria-label="Location" />
+      <div class="buttons">
+        <button id="use-location" type="button" title="Use your current location">Use my location</button>
+        <button id="refresh" type="button" title="Refresh weather">Refresh</button>
+      </div>
+    </section>
+
+    <section class="status" aria-live="polite" aria-atomic="true" id="status">
+      <!-- status messages inserted here -->
+    </section>
+
+    <section class="current card" id="current-weather" aria-label="Current weather">
+      <div class="current-left">
+        <div class="temp" id="temp">--°</div>
+        <div class="condition" id="condition">—</div>
+      </div>
+      <div class="current-right">
+        <div class="meta"><strong>Wind</strong><span id="wind">—</span></div>
+        <div class="meta"><strong>Rain</strong><span id="rain">—</span></div>
+        <div class="meta"><strong>Location</strong><span id="place">—</span></div>
+      </div>
+    </section>
+
+    <section class="timeline card" aria-label="Hourly forecast">
+      <h2 class="sr-only">Hourly forecast — previous and next 24 hours</h2>
+      <div class="timeline-wrap" id="timeline" tabindex="0" aria-label="Hourly timeline">
+        <!-- Hourly items injected here -->
+      </div>
+    </section>
+
+    <footer class="attribution">
+      <small>Data from Visual Crossing. Replace the API key in <code>app.js</code> with your own.</small>
+    </footer>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
